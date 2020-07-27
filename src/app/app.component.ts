@@ -1,7 +1,7 @@
-import { Component, ViewChild } from "@angular/core";
-import { Validators } from "@angular/forms";
-import { FieldConfig } from "./field.interface";
-import { DynamicFormComponent } from "./components/dynamic-form/dynamic-form.component";
+import {Component, ViewChild} from '@angular/core';
+import {Validators} from '@angular/forms';
+import {FieldConfig, TypeDependency} from './field.interface';
+import {DynamicFormComponent} from './components/dynamic-form/dynamic-form.component';
 
 @Component({
   selector: "app-root",
@@ -85,14 +85,31 @@ export class AppComponent {
       type: "select",
       label: "Country",
       name: "country",
-      value: "UK",
-      options: ["India", "UAE", "UK", "US"]
+      value: "",
+      options: ["Colombia", "Chile"]
+    },
+    {
+      type: "select",
+      label: "Ciudad",
+      name: "city",
+      value: "",
+      options: ["Cartagena", "Medellín"]
     },
     {
       type: "checkbox",
       label: "Accept Terms",
       name: "term",
-      value: true
+      value: true,
+      dependency: [
+        {
+          type: TypeDependency.HideShow,
+          id: "name"
+        },
+        {
+          type: TypeDependency.HideShow,
+          id: "email"
+        }
+      ]
     },
     {
       type: "button",
