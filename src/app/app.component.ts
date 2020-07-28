@@ -86,7 +86,13 @@ export class AppComponent {
       label: "Country",
       name: "country",
       value: "",
-      options: ["Colombia", "Chile"]
+      options: ["Colombia", "Chile"],
+      dependency: [
+        {
+          type: TypeDependency.LoadService,
+          id: "city"
+        }
+      ]
     },
     {
       type: "select",
